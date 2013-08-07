@@ -1,41 +1,45 @@
 {% include header.html  %}
+
 	<div class="main">
 		<div class="postbox radius">
-            <h2 class="first_title">{{ page.title  }}</h2>
-            <p class="posted_info">
-            posted by {{ page.author }} on {{ page.date | date:"%Y-%m-%d"  }} 分类: <a href="/categorys/{{ page.category }}.html">{{ page.category }}</a>
-            </p>
-            <div class="postcontent">
-			{{ content}}
-            </div>
-            <!--
-              <div class="postshare">
-              </div>
-            -->
-    		<div class="likepost">
-    			<h2>相关日志</h2>
-    			<ul>
-    				{% for v in site.categories[page.category] limit:5  %}
-    				<li><a href="{{ v.url  }}">{{ v.title  }}</a></li>
-    				{% endfor  %}
-    			</ul>
-    		</div>
+      <h2 class="first_title">{{ page.title  }}</h2>
+      <p class="posted_info">
+       posted by {{ page.author }} on {{ page.date | date:"%Y-%m-%d"  }} 分类: <a href="/categories/{{ page.category }}.html">{{ page.category }}</a>
+      </p>
 
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"todo800"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = 'http://static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0] 
-       || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-<!-- Duoshuo Comment END -->
+      <div class="postcontent">
+			  {{ content}}
+      </div>
+      <!--
+         <div class="postshare">
+         </div>
+      -->
+
+    	<div class="likepost">
+    		<h2>相关文章</h2>
+    		<ul>
+    			{% for v in site.categories[page.category] limit:5  %}
+    			<li><a href="{{ v.url  }}">{{ v.title  }}</a></li>
+    			{% endfor  %}
+    		</ul>
+    	</div>
+
+    <!-- Duoshuo Comment BEGIN -->
+    	<div class="ds-thread"></div>
+      <script type="text/javascript">
+        var duoshuoQuery = {short_name:"todo800"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0] 
+           || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+      </script>
+    <!-- Duoshuo Comment END -->
 
   </div>
 </div>
+
 {% include footer.html  %}
